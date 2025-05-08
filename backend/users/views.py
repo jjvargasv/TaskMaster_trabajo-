@@ -13,9 +13,12 @@ from django.contrib.auth.password_validation import validate_password
 
 from .serializers import RegisterSerializer, CustomUserSerializer
 
+# Obtiene el modelo de usuario actual
 User = get_user_model()
 
+# Vista para registrar un nuevo usuario
 class RegisterView(generics.CreateAPIView):
+    # Consulta para obtener todos los usuarios
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
